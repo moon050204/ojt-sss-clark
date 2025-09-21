@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Home — Personal Site</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">Clark</a>
+      <nav>
+        <ul class="nav">
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="top" class="hero">
+      <div class="container">
+        <h1>Hello — I'm Richmond Clark C. Dela Cruz</h1>
+        <div class="lead">
+          <p>On-the-Job Training at SSS Baliwag.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container about" data-transition="fade-scale">
+      <div class="about-top">
+  <img src="images/avatar.jpg" alt="Avatar" class="profile">
+        <div>
+          <h2>About</h2>
+          <p>I'm currently a BSIT student at Saint Mary's College of Baliwag. This website highlights my experience during my On-the-Job Training (OJT) at SSS Baliwag, where I assisted members, handled inquiries, supported administrative tasks, and learned operational procedures.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="container experience" data-transition="fade-scale">
+      <h2>Experience</h2>
+      <div class="exp-grid">
+        <figure class="exp-item">
+          <img src="images/portrait 1.jpg" alt="Helping people at a counter">
+          <figcaption class="muted">Helping and assisting people during my OJT at SSS Baliwag.</figcaption>
+        </figure>
+
+        <figure class="exp-item">
+          <img src="images/portrait 2.jpg" alt="Assisting members at the service counter">
+          <figcaption class="muted">Assisting members and learning operational procedures during OJT.</figcaption>
+        </figure>
+        
+        <figure class="exp-item landscape">
+          <img src="images/landscape.jpg" alt="Helping at the service area - landscape">
+          <figcaption class="muted">At the service area during OJT — supporting day-to-day operations.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="features container">
+      <article data-transition="pop">
+        <h2>What I Do</h2>
+        <ul>
+          <li>Assist members with inquiries and counter transactions</li>
+          <li>Process membership applications and assist with maintaining accurate documentation</li>
+          <li>Organize and file documents to support operational needs</li>
+          <li>Verify submitted requirements for benefit claims</li>
+        </ul>
+      </article>
+      <article data-transition="pop">
+        <h2>Process</h2>
+        <ul>
+          <li>Receive member inquiry or application at the counter</li>
+          <li>Create online accounts for new members</li>
+          <li>Provide confirmation and guidance to the member</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="contact" class="container" data-transition="fade-scale">
+      <h2>Contact</h2>
+      <div class="contact-icons">
+  <a class="icon-link" href="mailto:delacruzclark152@gmail.com" aria-label="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 6.5V18a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 6.5L12 13 3 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+  <a class="icon-link" href="https://www.facebook.com/share/14MAZZkxB3r/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M18 2h-3a4 4 0 0 0-4 4v2H8v3h3v7h3v-7h2.5L18 8.5H14V6a1 1 0 0 1 1-1h3V2z" fill="currentColor"/>
+          </svg>
+        </a>
+
+  <a class="icon-link" href="https://www.instagram.com/cl_rkkk?igsh=OGc3Zm1wMHZzODZy" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Clark — Built with care.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function(){
+      const t = 200;
+      document.querySelectorAll('[data-transition]').forEach((el, i) => {
+        const name = el.getAttribute('data-transition');
+        el.classList.add('will-transition', name);
+        setTimeout(()=> el.classList.add('in'), i * t);
+      });
+    })();
+
+    
+  </script>
+</body>
+</html>

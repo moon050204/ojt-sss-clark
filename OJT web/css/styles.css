@@ -1,0 +1,160 @@
+/* Simple responsive personal site styles */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa4b2;
+  --accent:#7dd3fc;
+  --accent-2:#60a5fa;
+  --glass: rgba(255,255,255,0.03);
+  --text:#e6eef8;
+  --hero-bg: url('../images/bg.svg');
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+
+/* Apply full-page background to the html element so it fills the scroll area */
+html{
+  background-image: radial-gradient(circle at 10% 20%, rgba(124,58,237,0.06), transparent 12%),
+                    radial-gradient(circle at 85% 80%, rgba(59,130,246,0.05), transparent 12%),
+                    linear-gradient(180deg,#071027 0%, #0b1220 40%, #071027 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  /* full-page CSS gradient background with soft radial accents for an aesthetic look */
+  background-image: radial-gradient(circle at 10% 20%, rgba(124,58,237,0.06), transparent 12%),
+                    radial-gradient(circle at 85% 80%, rgba(59,130,246,0.05), transparent 12%),
+                    linear-gradient(180deg,#071027 0%, #0b1220 40%, #071027 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  color:var(--text);
+  line-height:1.5;
+}
+
+/* Subtle overlay to ensure sufficient contrast/readability over the background image */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: linear-gradient(rgba(6,10,18,0.55), rgba(6,10,18,0.55));
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Respect high-contrast user preference */
+@media (prefers-contrast: more){
+  body::after{background: linear-gradient(rgba(6,10,18,0.72), rgba(6,10,18,0.72));}
+}
+
+/* Respect reduced motion preference (no background attachment or motion-related effects) */
+@media (prefers-reduced-motion: reduce){
+  body{background-attachment:scroll}
+}
+.container{max-width:960px;margin:0 auto;padding:24px}
+.site-header{background:transparent;padding:12px 0}
+.logo{font-weight:700;color:var(--text);text-decoration:none;font-size:1.1rem}
+.nav{list-style:none;padding:0;margin:0;display:flex;gap:16px}
+.nav a{color:var(--muted);text-decoration:none}
+.nav a:hover{color:var(--accent)}
+.hero{padding:56px 0;text-align:left;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-size:cover;background-position:center;opacity:0.00;pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,16,39,0.15),rgba(7,16,39,0.35));pointer-events:none}
+.hero h1{font-size:2.4rem;margin:0 0 8px;line-height:1.05;letter-spacing:0.2px}
+.hero h1::after{content:"";display:block;height:6px;width:84px;margin-top:14px;border-radius:6px;background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:0.95}
+.lead{color:var(--muted);max-width:60ch}
+.btn{display:inline-block;padding:10px 16px;background:var(--accent);color:#062024;border-radius:8px;text-decoration:none;font-weight:600}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,720px));gap:18px;padding:28px 0;justify-content:center}
+.features article{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;transition:transform 300ms cubic-bezier(.2,.9,.2,1),box-shadow 250ms;border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px)}
+.features article:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 18px 44px rgba(2,6,23,0.55)}
+
+/* Pop transition for feature cards */
+.pop{transform:translateY(8px) scale(.98);opacity:0}
+.pop.in{transform:translateY(0) scale(1);opacity:1;transition:transform 420ms cubic-bezier(.2,.9,.2,1),opacity 420ms}
+.about h1{margin-top:6px}
+.site-footer{border-top:1px solid rgba(255,255,255,0.04);padding:18px 0;margin-top:36px}
+@media (max-width:640px){
+  .hero h1{font-size:1.6rem}
+  .nav{gap:10px}
+}
+
+/* About section layout */
+.about-top{display:flex;gap:18px;align-items:center}
+.profile{width:120px;height:120px;border-radius:14px;flex:0 0 120px;border:2px solid rgba(255,255,255,0.04);background:linear-gradient(135deg,var(--card),rgba(255,255,255,0.02));transition:transform 0.35s cubic-bezier(.2,.9,.2,1),box-shadow 0.25s;background-size:cover;background-position:center}
+.profile:hover{transform:translateY(-8px) scale(1.06);box-shadow:0 18px 44px rgba(2,6,23,0.45)}
+
+.social{margin:6px 0;color:var(--muted)}
+.social a{color:var(--accent);text-decoration:none}
+.social a:hover{text-decoration:underline}
+
+/* Entrance transitions driven by data-transition */
+.will-transition{opacity:0;transform-origin:center left}
+.will-transition.in{opacity:1;transform:none;transition:opacity 420ms ease, transform 420ms cubic-bezier(.2,.9,.2,1)}
+.fade-scale{transform:scale(0.98) translateY(6px)}
+.fade-scale.in{transform:scale(1) translateY(0)}
+
+/* Cursor follower */
+
+
+@media (max-width:640px){
+  .about-top{flex-direction:column;align-items:center}
+  .profile{width:96px;height:96px}
+}
+
+/* Experience grid */
+.experience h2{margin-top:6px}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,720px));gap:18px;justify-items:center;justify-content:center;max-width:1280px;margin:0 auto}
+.exp-item{background:var(--glass);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform 320ms cubic-bezier(.2,.9,.2,1),box-shadow 320ms;overflow:hidden;max-width:900px;width:100%}
+.exp-item img{width:100%;height:auto;border-radius:8px;display:block;transition:transform 300ms cubic-bezier(.2,.9,.2,1),filter 360ms,box-shadow 360ms}
+.exp-item figcaption{color:var(--muted);padding-top:10px;font-size:0.95rem}
+
+/* Single experience photo */
+.experience-photo{display:block;text-align:center}
+.experience-photo img{max-width:100%;height:auto;border-radius:8px;box-shadow:0 10px 30px rgba(2,6,23,0.45)}
+.experience-photo figcaption{color:var(--muted);padding-top:10px}
+
+/* Responsive experience grid sizing */
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,360px));gap:18px;align-items:start;justify-content:center}
+.exp-item img{width:100%;height:auto;max-height:800px;object-fit:cover;object-position:60% center;border-radius:8px;display:block}
+.exp-item:hover{transform:translateY(-8px);box-shadow:0 22px 60px rgba(2,6,23,0.55)}
+.exp-item:hover img{transform:translateY(-6px) scale(1.08);filter:brightness(1.02)}
+.exp-item img:hover,.exp-item img:focus{transform:translateY(-6px) scale(1.06);box-shadow:0 18px 44px rgba(2,6,23,0.55)}
+
+@media (max-width:640px){
+  .exp-item img{max-height:520px}
+}
+
+/* Reset object-position on small screens to keep important content visible */
+@media (max-width:480px){
+  .exp-item img{object-position:50% center}
+}
+
+/* Decorative background accents */
+body::before{content:"";position:fixed;left:-10vw;top:-12vh;width:60vw;height:60vh;background:radial-gradient(circle at 20% 30%, rgba(124,58,237,0.08), transparent 30%), radial-gradient(circle at 80% 70%, rgba(59,130,246,0.06), transparent 30%);pointer-events:none;z-index:0}
+.container{position:relative;z-index:1}
+
+/* Image pop effect */
+.exp-item img{transition:transform 300ms cubic-bezier(.2,.9,.2,1),box-shadow 300ms}
+.exp-item img:hover,.exp-item img:focus{transform:translateY(-6px) scale(1.03);box-shadow:0 14px 36px rgba(2,6,23,0.5)}
+
+/* Make landscape image larger on wide screens */
+@media (min-width:1000px){
+  .exp-grid{grid-template-columns:1fr 1fr 1fr}
+  .exp-item.landscape{grid-column:span 2}
+  .exp-item.landscape img{max-height:1100px;object-position:70% center}
+}
+
+/* Contact icons */
+.contact-icons{display:flex;gap:14px;align-items:center;padding-top:8px;justify-content:center}
+.contact-icons .icon-link{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:10px;color:var(--muted);background:rgba(255,255,255,0.02);text-decoration:none;transition:background 180ms,color 180ms;transition:transform 220ms}
+.icon-link svg{display:block}
+.contact-icons .icon-link:hover,.contact-icons .icon-link:focus{background:rgba(125,211,252,0.08);color:var(--accent);outline:2px solid transparent;transform:translateY(-6px)}
+.contact-icons .icon-link:focus{box-shadow:0 0 0 3px rgba(125,211,252,0.12)}
+
+/* Center contact heading */
+#contact h2{margin-bottom:8px;text-align:center}
